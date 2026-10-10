@@ -186,56 +186,6 @@ A atividade de contribuições também pode ser representada por uma animação 
 
 </div>
 
-### Como ativar a animação
-
-1. Crie um repositório público chamado **`caiotug`**, caso ainda não exista. Ele deve ser o repositório especial de perfil do GitHub.
-2. No repositório, crie o arquivo `.github/workflows/snake.yml`.
-3. Adicione o conteúdo abaixo.
-4. Em **Settings → Actions → General**, verifique se as GitHub Actions estão habilitadas e se o workflow tem permissão para publicar na branch `output`.
-5. Acesse **Actions**, execute o workflow e confira se a branch `output` foi criada.
-
-Crie o arquivo `.github/workflows/snake.yml` com:
-
-```yaml
-name: Generate contribution snake
-
-on:
-  schedule:
-    - cron: "0 0 * * *"
-  workflow_dispatch:
-  push:
-    branches:
-      - main
-
-permissions:
-  contents: write
-
-jobs:
-  generate:
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-
-    steps:
-      - name: Generate contribution snake
-        uses: Platane/snk@v3
-        with:
-          github_user_name: caiotug
-          outputs: |
-            dist/github-contribution-grid-snake.svg
-            dist/github-contribution-grid-snake-dark.svg?palette=github-dark
-
-      - name: Publish generated SVGs
-        uses: crazy-max/ghaction-github-pages@v4
-        with:
-          target_branch: output
-          build_dir: dist
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-```
-
-A animação só aparecerá depois que o workflow for executado com sucesso e os arquivos SVG forem publicados na branch `output`.
-
----
 
 ## Onde me encontrar
 

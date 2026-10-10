@@ -170,7 +170,6 @@ Meu foco é desenvolver e organizar projetos relacionados à economia e à anál
 
 ## Contribution Snake
 
-A atividade de contribuições também pode ser representada por uma animação em SVG, atualizada automaticamente por meio do GitHub Actions.
 
 <div align="center">
 
